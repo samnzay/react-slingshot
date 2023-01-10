@@ -23,7 +23,12 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm audit fix
+      - run: npm audit
+      - run: 
+          name: on Analyze Failure
+          command: npm audit fix
+          when: on_fail
+        
 
 workflows:
   my_workflow:
